@@ -3,7 +3,7 @@ ob_start();
 ?>
 <?php
 $title = $title ?? "bienvenu page acceuil";
-$curentpage = 'home';
+$curentpage = "home";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,11 +33,6 @@ $curentpage = 'home';
                 <button>espace client</button>
             </h2>
         </div>
-        <form action="">
-            <label for=""></label>
-            <input type="text" placeholder="rechercher une voiture">
-            <button>rechercher</button>
-        </form>
     </div>
 
     <div>

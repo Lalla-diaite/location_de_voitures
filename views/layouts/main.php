@@ -15,15 +15,17 @@
             <a href="">Acceuil</a>
         </nav>
         <nav>
-            <a href="">clients</a>
+            <a href="/client">clients</a>
         </nav>
         <nav>
-            <a href="">location</a>
+            <a href="/location">location</a>
         </nav>
     </div>
-    <?=
-    $content;
-    ?>
+    <main>
+        <?=
+        $content;
+        ?>
+    </main>
     <footer>
         <p>touts droits reserve</p>
     </footer>
