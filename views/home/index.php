@@ -35,7 +35,7 @@ $curentpage = 'home';
         </div>
     </div>
     <div>
-        <img src="C:/laragon/www/vue-de-la-voiture.jpg" alt="" width="300">
+        <img src="/img/vue-de-la-voiture.jpg" alt="" width="300">
     </div>
     <div class=" mt-6 bg-orange-300">
         <h1 class="text-3xl text-center justify-center">Bienvenue chez Votre Partenaire Mobilité</h1>
