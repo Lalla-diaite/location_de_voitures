@@ -33,13 +33,13 @@ $curentpage = 'home';
                 <button>espace client</button>
             </h2>
         </div>
-
+        <form action="">
+            <label for=""></label>
+            <input type="text" placeholder="rechercher une voiture">
+            <button>rechercher</button>
+        </form>
     </div>
-    <form action="">
-        <label for=""></label>
-        <input type="text" placeholder="rechercher une voiture">
-        <button>rechercher</button>
-    </form>
+
     <div>
         <img src="/img/vue-de-la-voiture.jpg" alt="" width="300">
     </div>
