@@ -96,12 +96,38 @@ $curentpage = "home";
                 <h1>Trouver votre voiture</h1><br>
             </div>
             <div class="flex flex-rows justify-center">
-                <form action="" class="mt-1">
+                <form action="index.php" method="POST" class="mt-1">
                     <label for=""></label>
-                    <input type="text" class="px-6 py-3 rounded-lg mb-3 ml-3" name="recherche"
+                      <input type="hidden" name="controller" value="location">
+                <input type="hidden" name="action" value="verification">
+                    <input type="text" class="px-6 py-3 rounded-lg mb-3 ml-3"  name="designation"
                         placeholder=" rechercher une voiture">
-                    <button class="bg-orange-800 hover:bg-orange-700 mb-3 px-6 py-3 rounded-lg">rechercher</button>
+                    <button  type="submit" class="bg-orange-800 hover:bg-orange-700 mb-3 px-6 py-3 rounded-lg">rechercher</button>
                 </form>
+                <div>
+                <?php if (!empty($message)) : ?>
+                    <div class="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+                        <?php foreach ($message as $msg) : ?>
+                            <p><?= htmlspecialchars($msg) ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+             <div>
+                <?php if (!empty($voiture)) : ?>
+
+                    <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-lg">
+                        <?php foreach ($voiture[0] as $voi) : ?>
+                            <p>Voiture trouvée : <?= htmlspecialchars($voi["designation"]) ?></p>
+                            <p>Modèle : <?= htmlspecialchars($voi['marque']) ?></p>
+                            <p>numero chassis : <?= htmlspecialchars($voi['numero_chassis']) ?></p>
+                            <p>kilometrage : <?= htmlspecialchars($voi['kilometrage']) ?> km</p>
+                           <a href="index.php?action=location&id=<?= $voi['id_voiture'] ?>"> <button type="submit" class=" text-white bg-blue-300 border-3 border-blue-400 m-auto hover:blue-600 rounded-lg w-full"> louer</button></a>
+                        <?php endforeach; ?>
+        
+                    </div>
+                <?php endif; ?>
+            </div>
             </div>
         </div>
 

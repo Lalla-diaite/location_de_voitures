@@ -15,54 +15,132 @@ $curentpage = 'location';
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-100">
-    <div class="min-h-screen flex justify-center item-center  ">
-        <form action="bg-white shadow border rounded-lg w-full max-w-lg p-6 mx-auto ">
-            <h1 class="font-bold text-center text-xl mb-4">
-                Nouvelle location</h1>
+<body>
+        <div class="m-4 w-full max-w-md bg-white p-6 rounded-lg shadow mx-auto">
+     <!-- Recherche -->
+  
+  <h1 class="text-xl font-semibold mb-4">Nouvelle location</h1>
 
-            <div class="">
-                <label for="" class="">voiture</label><br>
-                <input type="text" placeholder="hundai sonata" class="mb-3 border-2 rounded-lg px-3 py-3 p-2 w-96"><br>
-            </div>
-            <div> <label for="" class="">numero CNI client</label><br>
-                <input type=" text" class="border-2 rounded-lg px-3 py-3 p-2 w-96" placeholder="cni"><br>
-            </div>
-            <div>
-                <button
-                    class="hover:bg-green-400 bg-green-600 text-white my-3 px-6 py-3 rounded-lg">valider</button><br>
+  <form action="index.php" method="POST" class="space-y-4">
 
-            </div>
-            <div>
-                <label for="">prenom client</label><br>
-                <input type="text" class="mb-3 border-2 rounded-lg px-3 py-3 p-2 w-96"
-                    placeholder=" prenom du client"><br>
-            </div>
-            <div>
-                <label for="">nom client</labeld><br>
-                    <input type="text" class="mb-3 border-2 rounded-lg px-3 py-3 p-2 w-96"
-                        placeholder="nom du client"><br>
-
-            </div>
-            <div>
-                <label for="" class="my-3">telephone client</label><br>
-                <input type=" number" class="mb-3 border-2 rounded-lg px-3 py-3 p-2 w-96"
-                    placeholder="tel du client"><br>
-            </div>
-            <label for="" class=" mb-3">Duree de location</label><br>
-            <select name="choix" id="" class="form-select p-2 w-96 rounded-lg">
-                <option value="" selected="">selectionner...</option><br>
-                <option value=" 1journee">1journee</option>
-                <option value="2jours">2jours</option>
-                <option value="3jours">3jours</option>
-                <option value="1semaines">1semaines</option>
-                <option value="2semaines">2semaines</option>
-
-            </select><br>
-            <button class="hover:bg-blue-400 bg-blue-600 mt-3 p-2 w-96 rounded-lg">louer</button>
-        </form>
+    <div>
+      <label class="block text-sm font-medium mb-1">Voiture</label>
+      <input
+        type="text"
+        placeholder="Hyundai Sonata"
+        class="w-full border border-gray-300 p-2 rounded text-black"
+      />
     </div>
 
+    <div>
+      <label class="block text-sm font-medium mb-1">Numéro CNI client</label>
+      <input type="hidden" name="controller" value="client">
+      <input type="hidden" name="action" value="verification">
+      <input
+        type="text"
+        class="w-full border border-gray-300 p-2 rounded text-black"
+        name="CNI"
+      />
+    </div>
+
+    <button
+      class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+    >
+      Valider
+    </button>
+    <?php if(empty($cni)) : ?>
+      <div class="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+           <p> veuiller remplir le champ CNI</p>
+      </div>
+      <?php endif; ?>
+      <?php if(!empty($resultat)) : ?>
+      <div class="mt-4 p-4 bg-green-100 text-green-700rounded-lg">
+          <p>client trouve avc succees <?=   htmlspecialchars($resultat->getNom()." ".$resultat->getPrenom()) ?></p>
+     </div>
+  </form>
+  <?php endif; ?>
+  <!-- Formulaire complet -->
+   
+   <?php if(isset($resultat) && $resultat === false) : ?>
+
+  <form action="index.php" method="POST" class="space-y-4 mt-8">
+
+      <input type="hidden" name="controller" value="location">
+      <input type="hidden" name="action" value="enrigistrer">
+    <div>
+      <label class="block text-sm font-medium mb-1">Nom client</label>
+      <input
+        type="text"
+        placeholder="Nom du client"
+        class="w-full border border-gray-300 p-2 rounded text-black"
+        name="nom"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-1">Prénom client</label>
+      <input
+        type="text"
+        placeholder="Prénom du client"
+        class="w-full border border-gray-300 p-2 rounded text-black"
+        name="prenom"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-1">Téléphone client</label>
+      <input
+        type="number"
+        placeholder="Tel du client"
+        class="w-full border border-gray-300 p-2 rounded text-black"
+        name="telephone"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-1">Durée de location</label>
+      <select
+        name="choix"
+        class="w-full border border-gray-300 p-2 rounded text-black"
+      >
+        <option selected>Selectionner...</option>
+        <option value="1journee">1 journée</option>
+        <option value="2jours">2 jours</option>
+        <option value="3jours">3 jours</option>
+        <option value="1semaine">1 semaine</option>
+        <option value="2semaines">2 semaines</option>
+      </select>
+    </div>
+
+    <button type="submit" 
+      class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+    >
+      Louer
+    </button>
+  </form>
+  <?php endif; ?>
+
+  <?php if ( isset($client) && $client === true && $location === true) : ?>
+  <div>
+    <?php if (!empty($message)) : ?>
+        <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-lg">
+            <?php foreach ($message as $msg) : ?>
+                <p><?= htmlspecialchars($msg) ?></p>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+  </div>
+  <?php elseif (!empty($message)) : ?>
+    <div class="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+      <?php foreach ($message as $mes) : ?>
+           <p> <?=  $mes ?></p>
+           <?php endforeach; ?>
+    </div>
+  <?php endif; ?>
+  
+ 
+</div>
+</body>
 </html>
 <?php
 $content = ob_get_clean();
