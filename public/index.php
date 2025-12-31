@@ -13,7 +13,7 @@ switch ($path) {
         require_once __DIR__ . "/../views/home/clients.php";
         break;
     case 'location':
-        require_once __DIR__ . "/../views/home/clients.php";
+        require_once __DIR__ . "/../views/home/location.php";
         break;
     default:
         http_response_code(404);

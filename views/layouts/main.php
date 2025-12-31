@@ -10,9 +10,10 @@
 </head>
 
 <body>
-    <div class="flex justify-evenly bg-fixed">
+    <div
+        class="flex justify-evenly bg-fixed bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white p-4 border-2 border-gray-800 rounded-lg mb-2 sticky top-0 z-50">
         <nav>
-            <a href="">Acceuil</a>
+            <a href="/">Acceuil</a>
         </nav>
         <nav>
             <a href="/client">clients</a>
@@ -26,8 +27,12 @@
         $content;
         ?>
     </main>
-    <footer>
-        <p>touts droits reserve</p>
+    <footer class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white p-4 text-center text-xl sticky bottom-0 w-full mt-3
+            ">
+        <div>
+            <p>touts droits reserve</p>
+        </div>
+
     </footer>
 </body>
 
